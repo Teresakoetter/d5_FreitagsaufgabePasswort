@@ -7,12 +7,19 @@ public class Main {
         answer(password);
 
     }
-    public static boolean pW(String testPassword){
-        testPassword = password;
-        boolean pWCorrect;
+    public static boolean pWLength(String testPasswordLength){
+        testPasswordLength = password;
+        boolean pWCorrectLength;
         if (password.length() != 5){
-            pWCorrect = false;
-        } else if(password.contains("1")
+            pWCorrectLength = false;
+        } else{
+            pWCorrectLength = true;
+        }return pWCorrectLength;
+    }
+    public static boolean pWNumber(String testPasswordNumber){
+        testPasswordNumber = password;
+        boolean pWCorrectNumber;
+        if((password.contains("1")
                 || password.contains("2")
                 || password.contains("3")
                 || password.contains("4")
@@ -20,16 +27,15 @@ public class Main {
                 || password.contains("6")
                 || password.contains("7")
                 || password.contains("8")
-                || password.contains("9")){
-            pWCorrect = true;
-        }else{
-
-            pWCorrect = true;
-        }return pWCorrect;
+                || password.contains("9"))){
+            pWCorrectNumber = true;}else{
+                pWCorrectNumber = false;
+            }return pWCorrectNumber;
     }
     public static void answer(String answerPassword){
         answerPassword = password;
-        if(pW(answerPassword) == true){
+        if(pWLength(answerPassword) == true
+        && pWNumber(answerPassword) == true){
             System.out.println("Your new password is: " + answerPassword);
         }else{
             System.out.println("Your PW has to contain exact 5 characters and at least one number.");
